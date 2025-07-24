@@ -1,0 +1,22 @@
+.news-feed {
+  background: #23272f;
+  color: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.news-feed h2 {
+  color: #007bff;
+  margin-bottom: 1rem;
+}
+
+.news-feed ul {
+  list-style: none;
+  padding: 0;
+}
+
+.news-feed li {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+} 

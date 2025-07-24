@@ -1,0 +1,50 @@
+# Node
+node_modules/
+.env
+.env.*
+package-lock.json
+yarn.lock
+npm-debug.log*
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# VSCode
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+build/
+dist/
+
+# React
+client/build/
+
+# Generated stock graph images
+server/*.png
+
+# Logs
+logs/
+*.log
+
+# Misc
+*.swp
+*.swo
+.idea/
+
+# Coverage
+coverage/
+
+# Test
+*.test.js
+*.spec.js
+
+# Jupyter
+.ipynb_checkpoints/ 

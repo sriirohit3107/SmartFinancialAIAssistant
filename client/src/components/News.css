@@ -1,0 +1,20 @@
+.news-feed {
+    background: #1e1e1e;
+    color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+.news-feed h2 {
+    color: #007bff;
+}
+.news-feed ul {
+    list-style: none;
+    padding: 0;
+}
+.news-feed ul li {
+    margin-bottom: 1rem;
+}
+.news-feed ul li:before {
+    content: '📰';
+}
