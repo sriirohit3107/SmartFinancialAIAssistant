@@ -6,9 +6,11 @@ import axios from 'axios';
  * @returns {object} - Live quote data
  */
 
+const API_BASE = process.env.REACT_APP_API_BASE || 'http://localhost:5000';
+
 export async function getStockQuote(symbol) {
     try{
-        const response = await axios.get(`http://localhost:5000/api/stock/${symbol}`)
+        const response = await axios.get(`${API_BASE}/api/stock/${symbol}`)
         return response.data;
     }
     catch(error){
