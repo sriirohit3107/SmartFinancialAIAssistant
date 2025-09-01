@@ -11,6 +11,7 @@
     "build": "cd client && npm run build",
     "build:prod": "npm run build && npm run start",
     "install-all": "npm install && cd client && npm install",
+    "postinstall": "cd client && npm install",
     "dev-full": "concurrently \"npm run dev\" \"npm run client\"",
     "test:prod": "npm run build && npm start",
     "deploy:vercel": "vercel --prod",
