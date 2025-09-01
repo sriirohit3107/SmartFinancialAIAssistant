@@ -28,55 +28,28 @@ function Navbar() {
 
   return (
     <div>
-      <nav
-        className="navbar"
-        style={{
-          background: '#1e1e1e',
-          color: 'white',
-          padding: '1rem 2rem',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          borderRadius: '8px',
-          marginBottom: '2rem',
-        }}
-      >
+      <nav className="navbar">
         <h1>SmartFinancial Assistant</h1>
-        <form
-          onSubmit={handleSearch}
-          style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
-        >
+        <form className="search-form" onSubmit={handleSearch}>
           <input
             type="text"
+            className="search-input"
             aria-label="Stock Symbol"
             placeholder="Search for any stocks..."
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
-            style={{
-              padding: '0.5rem',
-              borderRadius: '4px',
-              border: 'none',
-              width: '200px',
-            }}
           />
           <button
             type="submit"
+            className="search-button"
             disabled={loading}
-            style={{
-              padding: '0.5rem 1rem',
-              borderRadius: '4px',
-              border: 'none',
-              background: '#007bff',
-              color: 'white',
-              cursor: loading ? 'not-allowed' : 'pointer',
-            }}
           >
             {loading ? 'Searching...' : 'Search'}
           </button>
         </form>
       </nav>
 
-      {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
+      {error && <div className="error-message">{error}</div>}
       {searchedData && <SearchResult data={searchedData} symbol={searchInput.trim().toUpperCase()} />}
     </div>
   );

@@ -1,8 +1,39 @@
 {
+  "name": "smartfinancial-ai",
+  "version": "1.0.0",
+  "description": "SmartFinancial AI - Modern financial dashboard and assistant",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/production.js",
+    "dev": "nodemon server/server.js",
+    "client": "cd client && npm start",
+    "server": "node server/server.js",
+    "build": "cd client && npm run build",
+    "build:prod": "npm run build && npm run start",
+    "install-all": "npm install && cd client && npm install",
+    "dev-full": "concurrently \"npm run dev\" \"npm run client\"",
+    "test:prod": "npm run build && npm start",
+    "deploy:vercel": "vercel --prod",
+    "deploy:railway": "railway up"
+  },
   "dependencies": {
     "axios": "^1.11.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.0",
     "express": "^5.1.0"
-  }
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0",
+    "concurrently": "^8.2.0"
+  },
+  "keywords": [
+    "finance",
+    "ai",
+    "stock-analysis",
+    "react",
+    "nodejs",
+    "python"
+  ],
+  "author": "SmartFinancial AI Team",
+  "license": "MIT"
 }

@@ -44,11 +44,27 @@ function MarketSummary() {
     { name: 'Nasdaq (QQQ)', data: nasdaqData },
   ];
 
+  if (loading) {
+    return (
+      <div className='market-summary'>
+        <h2>📊 Market Summary</h2>
+        <div className='loading-message'>Loading Market Summary...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className='market-summary'>
+        <h2>📊 Market Summary</h2>
+        <div className='error-message'>{error}</div>
+      </div>
+    );
+  }
+
   return (
     <div className='market-summary'>
       <h2>📊 Market Summary</h2>
-      {loading && <p>Loading Market Summary...</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
       <div className='market-cards'>
         {marketItems.map(({ name, data }) => (
           <div key={name} className='card'>

@@ -48,3 +48,4 @@ coverage/
 
 # Jupyter
 .ipynb_checkpoints/ 
+.vercel
