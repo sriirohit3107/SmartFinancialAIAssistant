@@ -1,38 +1,39 @@
 @echo off
+REM ============================================
+REM SmartFinancial AI — Start All Services (Windows)
+REM ============================================
+REM Starts:
+REM   1. FastAPI Analytics Engine (port 8000)
+REM   2. Node.js API Server (port 5000)
+REM   3. React Dev Server (port 3000)
+
 echo 🚀 Starting SmartFinancial AI...
 echo.
 
-echo 📦 Installing dependencies...
-call npm install
-if %errorlevel% neq 0 (
-    echo ❌ Failed to install dependencies
-    pause
-    exit /b 1
-)
+REM 1. Start Analytics Engine
+echo 🐍 Starting Analytics Engine on port 8000...
+cd server\analytics
+start "Analytics Engine" cmd /k "uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
+cd ..\..
+timeout /t 3 /nobreak >nul
 
-echo 📦 Installing client dependencies...
-cd client
-call npm install
-if %errorlevel% neq 0 (
-    echo ❌ Failed to install client dependencies
-    pause
-    exit /b 1
-)
+REM 2. Start Node.js backend
+echo 🖥️  Starting Node.js API on port 5000...
+cd server
+start "Node API" cmd /k "node server.js"
 cd ..
 
-echo 🐍 Installing Python dependencies...
-pip install -r requirements.txt
-if %errorlevel% neq 0 (
-    echo ⚠️  Warning: Some Python dependencies may not have installed correctly
-    echo    You can try: python -m pip install -r requirements.txt
-)
+REM 3. Start React frontend
+echo 🌐 Starting React frontend on port 3000...
+cd client
+start "React App" cmd /k "npm start"
+cd ..
 
 echo.
-echo 🔑 IMPORTANT: Make sure you have created a .env file with your TWELVE_API_KEY
-echo    Copy env.example to .env and add your API key
+echo ✅ All services starting:
+echo    📊 Analytics Engine: http://localhost:8000
+echo    🖥️  API Server:      http://localhost:5000
+echo    🌐 Frontend:         http://localhost:3000
 echo.
-
-echo 🚀 Starting the application...
-npm run dev-full
-
+echo Close the individual command windows to stop services.
 pause

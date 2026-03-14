@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const path = require('path');
 
 const stockRoutes = require('./routes/stockRoutes');
+const analyticsProxy = require('./services/analyticsProxy');
 
 dotenv.config();
 
@@ -12,9 +13,12 @@ const app = express();
 
 // Production CORS configuration
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || ['http://localhost:3000', 'https://your-domain.vercel.app'],
+  origin: process.env.FRONTEND_URL || [
+    'http://localhost:3000',
+    'https://smart-financial-eight.vercel.app',
+  ],
   credentials: true,
-  optionsSuccessStatus: 200
+  optionsSuccessStatus: 200,
 };
 
 app.use(cors(corsOptions));
@@ -28,12 +32,15 @@ if (process.env.NODE_ENV === 'production') {
 // API Routes
 app.use('/api/stock', stockRoutes);
 
-// Health check endpoint
-app.get('/api/health', (req, res) => {
-  res.json({ 
-    status: 'OK', 
+// Health check — includes analytics engine status
+app.get('/api/health', async (req, res) => {
+  const analyticsHealth = await analyticsProxy.healthCheck();
+  res.json({
+    status: 'ok',
+    service: 'smartfinancial-api',
+    analytics_engine: analyticsHealth,
     timestamp: new Date().toISOString(),
-    environment: process.env.NODE_ENV || 'development'
+    environment: process.env.NODE_ENV || 'development',
   });
 });
 
@@ -53,6 +60,7 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Server is running on port ${PORT}`);
   console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`📊 Analytics Engine: ${process.env.ANALYTICS_URL || 'http://localhost:8000'}`);
   if (process.env.NODE_ENV === 'production') {
     console.log(`📱 Frontend served from: ${path.join(__dirname, '../client/build')}`);
   }
