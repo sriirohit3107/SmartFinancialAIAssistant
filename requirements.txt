@@ -1,18 +1,7 @@
-# SmartFinancial AI — Python Dependencies
-# Install: pip install -r requirements.txt
-
-# Analytics Engine (FastAPI)
-fastapi==0.115.0
-uvicorn[standard]==0.30.0
-
-# Data & Analysis
-yfinance==0.2.40
-pandas==2.2.0
-numpy==1.26.0
-requests==2.31.0
-
-# Charts (still used by Streamlit app)
-matplotlib==3.9.0
-
-# Streamlit dashboard (optional standalone UI)
-streamlit==1.39.0
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+yfinance>=0.2.40
+pandas>=2.1.0
+numpy>=1.24.0
+requests>=2.31.0
+python-dotenv>=1.0.0
