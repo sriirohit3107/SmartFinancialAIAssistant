@@ -1,7 +1,6 @@
-
-
 from dotenv import load_dotenv
-load_dotenv(dotenv_path="../../.env")
+load_dotenv()  # works locally if .env is in cwd
+load_dotenv(dotenv_path="../../.env")  
 
 """
 SmartFinancial AI — Analytics Engine (FastAPI)
